@@ -1,0 +1,13 @@
+language: node_js
+node_js: 
+  - 16
+
+services:
+  - docker
+
+before_install: #predeployment / staging 
+  - docker build -t Jeremy1517/xxx -f Dockerfile.dev .
+
+script: #deployment / staging
+  - docker run Jeremy1517/xxx npm run test -- --coverage
+
